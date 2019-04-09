@@ -30,15 +30,17 @@ def candidate_data(request):
 
 
 def test(request, candidate_id, planet_id):
-    orden = get_object_or_404(Orden.objects.select_related('tests').prefetch_related('tests__questions'),
-                              planet_id=planet_id)
     if request.method == "POST":
-        print(request)
+        print(request.POST)
     else:
-        return render_to_response('service/test.html', {'orden': orden})
+        orden = get_object_or_404(Orden.objects.select_related('tests').prefetch_related('tests__questions'),
+                                  planet_id=planet_id)
+        return render_to_response('service/test.html', {'orden': orden, 'candidate_id': candidate_id})
 
 
-
+def end(request):
+    return HttpResponse("Вы выполнили тестовое испытание.\nПо итогу зачисления "
+                        "вам будет направленно письмо на указанный вами email.")
 
 
 # def candidate_data(request):
@@ -55,7 +57,6 @@ def jedi(request):
     return render(request, 'service/jedi.html', context)
 
 
-def detail(request, jedi_id):
-    return HttpResponse("You're voting on question %s." % jedi_id)
-
+def detail(request):
+    pass
 
