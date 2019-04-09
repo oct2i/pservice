@@ -13,14 +13,16 @@
         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
 
-    <br><br><br>
-
-        <h3>Вопросы:</h3>
-        {% for question in orden.test.questions.all %}
-            <p>Вопрос: {{ question.question }}</p>
-            <p>Ответ: {% if question.answer %} ДА {% else %} НЕТ {% endif %}</p>
-            <br><br><br>
+    <h3>Вопросы:</h3>
+    <form action="." method="post" enctype="multipart/form-data">
+        {% for question in orden.tests.questions.all %}
+            <p>{{ question.question }}</p>
+            <input type="radio" name="question_{{ forloop.counter }}" value="yes">Да
+            <input type="radio" name="question_{{ forloop.counter }}" value="no">Нет
         {% endfor %}
+        <br><br>
+        <button type="submit">Готово</button>
+    </form>
 
 
 

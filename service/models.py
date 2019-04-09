@@ -1,4 +1,5 @@
 from django.db import models
+import jsonfield
 
 
 class Candidate(models.Model):
@@ -32,6 +33,17 @@ class Planet(models.Model):
         return self.title
 
 
+class Orden(models.Model):
+    name = models.CharField(verbose_name='Название ордена', max_length=35)
+    planet = models.OneToOneField('Planet',
+                                  verbose_name='Планета',
+                                  related_name='ordens',
+                                  on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.name
+
+
 class Test(models.Model):
     orden = models.OneToOneField('Orden',
                                  verbose_name='Орден',
@@ -48,18 +60,11 @@ class Question(models.Model):
                              related_name='questions',
                              on_delete=models.PROTECT)
     question = models.CharField(verbose_name='Текст вопроса', max_length=256)
-    answer = models.BooleanField(verbose_name='Ответ')
 
     def __str__(self):
         return self.question
 
 
-class Orden(models.Model):
-    name = models.CharField(verbose_name='Название ордена', max_length=35)
-    planet = models.OneToOneField('Planet',
-                                  verbose_name='Планета',
-                                  related_name='orden',
-                                  on_delete=models.PROTECT)
+class Answer(models.Model):
+    answers = jsonfield.JSONField()
 
-    def __str__(self):
-        return self.name
