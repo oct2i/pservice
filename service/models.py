@@ -66,5 +66,9 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
+    candidate = models.OneToOneField('Candidate',
+                                     verbose_name='Кандидат',
+                                     related_name='answers',
+                                     on_delete=models.PROTECT)
     answers = jsonfield.JSONField()
 

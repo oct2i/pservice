@@ -2,8 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, get_list_or_404, render, render_to_response, redirect
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
+import json
 
-from .models import Candidate, Jedi, Orden
+from .models import Candidate, Jedi, Orden, Answer
 from .forms import CandidateForm
 
 
@@ -35,7 +36,15 @@ def test(request, candidate_id, planet_id):
     orden = get_object_or_404(Orden.objects.select_related('tests').prefetch_related('tests__questions'),
                               planet_id=planet_id)
     if request.method == "POST":
-        print(request.POST)
+        answers = []
+        for id, question in enumerate(orden.tests.questions.all()):
+            answers.append({
+                'question': question.question,
+                'answer': request.POST['question_' + str(id+1)]
+            })
+        answer_json = json.dumps(answers)
+        Answer.objects.create(answers=answer_json, candidate=candidate_id)
+
         return render_to_response('service/end.html')
     else:
         return render_to_response('service/test.html', {'orden': orden, 'candidate_id': candidate_id})
@@ -58,4 +67,5 @@ def jedi(request):
 
 def detail(request):
     pass
+    # answers = json.loads(s)
 

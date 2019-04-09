@@ -18,8 +18,8 @@
         {% csrf_token %}
         {% for question in orden.tests.questions.all %}
             <p>{{ question.question }}</p>
-            <input type="radio" name="question_{{ forloop.counter }}" value="yes">Да
-            <input type="radio" name="question_{{ forloop.counter }}" value="no">Нет
+            <input type="radio" name="question_{{ forloop.counter }}" value="Да">Да
+            <input type="radio" name="question_{{ forloop.counter }}" value="Нет">Нет
         {% endfor %}
         <br><br>
         <button type="submit">Готово</button>
