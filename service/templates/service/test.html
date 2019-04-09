@@ -15,6 +15,7 @@
 
     <h3>Вопросы:</h3>
     <form action="{% url 'service:test' candidate_id orden.planet_id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         {% for question in orden.tests.questions.all %}
             <p>{{ question.question }}</p>
             <input type="radio" name="question_{{ forloop.counter }}" value="yes">Да

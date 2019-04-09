@@ -32,17 +32,14 @@ def candidate_data(request):
 
 @csrf_exempt
 def test(request, candidate_id, planet_id):
+    orden = get_object_or_404(Orden.objects.select_related('tests').prefetch_related('tests__questions'),
+                              planet_id=planet_id)
     if request.method == "POST":
         print(request.POST)
+        return render_to_response('service/end.html')
     else:
-        orden = get_object_or_404(Orden.objects.select_related('tests').prefetch_related('tests__questions'),
-                                  planet_id=planet_id)
         return render_to_response('service/test.html', {'orden': orden, 'candidate_id': candidate_id})
 
-
-def end(request):
-    return HttpResponse("Вы выполнили тестовое испытание.\nПо итогу зачисления "
-                        "вам будет направленно письмо на указанный вами email.")
 
 
 # def candidate_data(request):

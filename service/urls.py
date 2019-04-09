@@ -9,7 +9,7 @@ urlpatterns = [
 
     path('candidates/', views.candidate_data, name='candidate'),
     path('candidates/test/<int:candidate_id>/<int:planet_id>/', views.test, name='test'),
-    # path('candidates/test/end/', views.test),
+    path('candidates/test/end/', views.test, name='end'),
 
     path('jedis/', views.jedi, name='jedis'),
     path('jedis/<int:jedi_id>/', views.detail, name='current_jedi'),
