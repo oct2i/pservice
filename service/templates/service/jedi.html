@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Для Джедаев</title>
+</head>
+<body>
+    <h2>Выбери себя из списка:</h2>
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+    {% if jedi_list %}
+        <ul>
+        {% for jedi in jedi_list %}
+            <li><a href="{% url 'service:current_jedi' jedi.id %}">{{ jedi.name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Список Джежаев пуст.</p>
+    {% endif %}
+
+</body>
+</html>

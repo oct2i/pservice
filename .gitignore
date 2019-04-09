@@ -1,0 +1,30 @@
+# directory-based project format
+.idea/
+
+# file-based project format:
+*.iml
+*.ipr
+*.iws
+
+# byte-compiled / optimized
+__pycache__/
+*.py[cod]
+
+# virtualenv
+.venv
+venv/
+ENV/
+venv.bak/
+
+# django stuff:
+*.log
+local_settings.py
+
+# django migrations
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+
+# other
+*.sqlite3
+pservice/settings.py

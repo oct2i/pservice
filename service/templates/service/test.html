@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Для кандидатов</title>
+</head>
+<body>
+    <h2>Выполни тестовое испытание:</h2>
+	<p>Номер ордена: {{ orden.id }}</p>
+	<p>Название ордена: {{orden.name }}</p>
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+    <br><br><br>
+
+        <h3>Вопросы:</h3>
+        {% for question in orden.test.questions.all %}
+            <p>Вопрос: {{ question.question }}</p>
+            <p>Ответ: {% if question.answer %} ДА {% else %} НЕТ {% endif %}</p>
+            <br><br><br>
+        {% endfor %}
+
+
+
+</body>
+</html>
