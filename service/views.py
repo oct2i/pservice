@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, get_list_or_404, render, render_to_response, redirect
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Candidate, Jedi, Orden
 from .forms import CandidateForm
@@ -29,6 +30,7 @@ def candidate_data(request):
         return render(request, 'service/candidate.html', {'form': form})
 
 
+@csrf_exempt
 def test(request, candidate_id, planet_id):
     if request.method == "POST":
         print(request.POST)

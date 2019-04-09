@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
 
     path('candidates/', views.candidate_data, name='candidate'),
-    path('candidates/test/<int:candidate_id>/<int:planet_id>/', views.test, name='test_list'),
+    path('candidates/test/<int:candidate_id>/<int:planet_id>/', views.test, name='test'),
     # path('candidates/test/end/', views.test),
 
     path('jedis/', views.jedi, name='jedis'),
