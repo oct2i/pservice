@@ -5,20 +5,20 @@
     <title>Для Джедаев</title>
 </head>
 <body>
-    <h2>Выбери себя из списка:</h2>
+    <h2>Выбери кандидатов:</h2>
 
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
 
-    {% if jedi_list %}
+    {% if candidate_list %}
         <ul>
-        {% for jedi in jedi_list %}
-            <li><a href="{% url 'service:current_jedi' jedi.id jedi.learning_planet_id %}">{{ jedi.name }}</a></li>
+        {% for candidate in candidate_list %}
+            <li><a href="{% url 'service:done_test' candidate.id %}">{{ candidate.name }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
-        <p>Список Джежаев пуст.</p>
+        <p>Список кандидатов пуст.</p>
     {% endif %}
 
 </body>

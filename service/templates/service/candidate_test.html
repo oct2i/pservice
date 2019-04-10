@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Для Джедаев</title>
+</head>
+<body>
+    <h2>Результаты испытания {{ candidate.name }}</h2>
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+    <form method="POST" class="post-form">{% csrf_token %}
+        {% for t in test %}
+            <p>{{ t.question }}</p>
+            <p>{{ t.answer }}</p>
+            <br>
+        {% endfor %}
+        <button type="submit">Зачислить в падаваны</button>
+    </form>
+
+</body>
+</html>

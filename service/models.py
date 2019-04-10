@@ -6,6 +6,7 @@ class Candidate(models.Model):
     name = models.CharField(verbose_name='Имя', max_length=25)
     age = models.IntegerField(verbose_name='Возраст', default=0)
     email = models.CharField(verbose_name='Email', max_length=25)
+    padawan = models.BooleanField(verbose_name='Статус падавана', default=False)
     residence_planet = models.ForeignKey('Planet',
                                          verbose_name='Планета проживания',
                                          related_name='candidates',
