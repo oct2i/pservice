@@ -13,6 +13,6 @@ urlpatterns = [
 
     path('jedis/', views.jedi, name='jedis'),
     path('jedis/<int:jedi_id>/<int:planet_id>/', views.candidate_list, name='current_jedi'),
-    path('jedis/test/<int:candidate_id>/', views.candidate_test, name='done_test'),
+    path('jedis/<int:jedi_id>/<int:planet_id>/test/<int:candidate_id>/', views.candidate_test, name='done_test'),
 ]
 

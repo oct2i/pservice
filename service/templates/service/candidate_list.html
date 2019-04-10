@@ -14,7 +14,7 @@
     {% if candidate_list %}
         <ul>
         {% for candidate in candidate_list %}
-            <li><a href="{% url 'service:done_test' candidate.id %}">{{ candidate.name }}</a></li>
+            <li><a href="{% url 'service:done_test' jedi_id planet_id candidate.id %}">{{ candidate.name }}</a></li>
         {% endfor %}
         </ul>
     {% else %}

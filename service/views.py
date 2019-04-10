@@ -53,24 +53,28 @@ def jedi(request):
 
 
 def candidate_list(request, jedi_id, planet_id):
-    candidate_list = Candidate.objects.filter(residence_planet_id=planet_id, padawan='False')
-    context = {'candidate_list': candidate_list}
+    candidate_list = Candidate.objects.filter(residence_planet_id=planet_id, padawan_id=None)
+    context = {'candidate_list': candidate_list,
+               'jedi_id': jedi_id,
+               'planet_id': planet_id}
     return render(request, 'service/candidate_list.html', context)
 
 
-def candidate_test(request, candidate_id):
+def candidate_test(request, jedi_id, planet_id, candidate_id):
     candidate = get_object_or_404(Candidate, id=candidate_id)
     if request.method == "POST":
-        candidate.padawan = True
+        candidate.padawan_id = jedi_id
         candidate.save()
 
         title = 'О зачислении в падаваны'
         message = 'По результатам пройденного теста вы зачислены в падаваны.'
-        from_mail = 'zyabrin.v@yandex.ru'
+        from_mail = 'oct2i@yandex.ru'
         to_mail = candidate.email
         send_mail(title, message, from_mail, [to_mail], fail_silently=False,)
 
-        context = {'candidate': candidate}
+        context = {'candidate': candidate,
+                   'jedi_id': jedi_id,
+                   'planet_id': planet_id}
         return render_to_response('service/end_review.html', context)
 
     else:
