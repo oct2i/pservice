@@ -21,7 +21,7 @@ def candidate_data(request):
         form = CandidateForm(request.POST)
         if form.is_valid():
             candidate = form.save()
-            url = reverse('service:test_list', kwargs={
+            url = reverse('service:test', kwargs={
                 'candidate_id': candidate.id,
                 'planet_id': candidate.residence_planet_id
             })
@@ -36,14 +36,14 @@ def test(request, candidate_id, planet_id):
     orden = get_object_or_404(Orden.objects.select_related('tests').prefetch_related('tests__questions'),
                               planet_id=planet_id)
     if request.method == "POST":
-        answers = []
+        answer_list = []
         for id, question in enumerate(orden.tests.questions.all()):
-            answers.append({
+            answer_list.append({
                 'question': question.question,
                 'answer': request.POST['question_' + str(id+1)]
             })
-        answer_json = json.dumps(answers)
-        Answer.objects.create(answers=answer_json, candidate=candidate_id)
+
+        Answer.objects.create(candidate=candidate_id, answers=json.dumps(answer_list))
 
         return render_to_response('service/end.html')
     else:
