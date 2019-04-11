@@ -5,9 +5,7 @@
     <title>Для кандидатов</title>
 </head>
 <body>
-    <h2>Выполни тестовое испытание:</h2>
-	<p>Номер ордена: {{ orden.id }}</p>
-	<p>Название ордена: {{ orden.name }}</p>
+    <h2>Выполните тестовое испытание:</h2>
 
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
@@ -24,8 +22,5 @@
         <br><br>
         <button type="submit">Готово</button>
     </form>
-
-
-
 </body>
 </html>

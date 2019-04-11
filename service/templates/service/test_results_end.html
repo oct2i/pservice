@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Для Джедаев</title>
+    <title>Для джедаев</title>
 </head>
 <body>
     <h2>{{ candidate }} зачислен(а) в падаваны</h2>
     <h3>Падавану направленно письмо на email</h3>
     <br>
-    <a href="{% url 'service:current_jedi' jedi_id planet_id %}">Вернуться к списку кандидатов</a>
+    <a href="{% url 'service:jedi' jedi_id planet_id %}">Вернуться к списку кандидатов</a>
 </body>
 </html>

@@ -27,4 +27,3 @@ local_settings.py
 
 # other
 *.sqlite3
-pservice/settings.py

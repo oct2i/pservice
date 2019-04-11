@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Для Джедаев</title>
+    <title>Для джедаев</title>
 </head>
 <body>
     <h2>Выбери себя из списка:</h2>
@@ -14,11 +14,11 @@
     {% if jedi_list %}
         <ul>
         {% for jedi in jedi_list %}
-            <li><a href="{% url 'service:current_jedi' jedi.id jedi.learning_planet_id %}">{{ jedi.name }}</a></li>
+            <li><a href="{% url 'service:jedi' jedi.id jedi.learning_planet_id %}">{{ jedi.name }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
-        <p>Список Джежаев пуст.</p>
+        <p>Список джежаев пуст.</p>
     {% endif %}
 
 </body>

@@ -1,4 +1,5 @@
 from django.db import models
+
 import jsonfield
 
 
@@ -77,4 +78,3 @@ class Answer(models.Model):
                                      related_name='answer',
                                      on_delete=models.PROTECT)
     answers = jsonfield.JSONField()
-

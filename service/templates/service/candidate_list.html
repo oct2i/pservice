@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Для Джедаев</title>
+    <title>Для джедаев</title>
 </head>
 <body>
-    <h2>Выбери кандидатов:</h2>
+    <h2>Выберите кандидата:</h2>
 
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
@@ -14,7 +14,7 @@
     {% if candidate_list %}
         <ul>
         {% for candidate in candidate_list %}
-            <li><a href="{% url 'service:done_test' jedi_id planet_id candidate.id %}">{{ candidate.name }}</a></li>
+            <li><a href="{% url 'service:test_results' jedi_id planet_id candidate.id %}">{{ candidate.name }}</a></li>
         {% endfor %}
         </ul>
     {% else %}

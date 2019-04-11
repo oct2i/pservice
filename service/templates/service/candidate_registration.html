@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Для кандидатов</title>
+</head>
+<body>
+    <h2>Для начала укажите свои данные:</h2>
+
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+    <form method="POST" class="post-form">{% csrf_token %}
+        {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.label_tag }} {{ field }}
+                {% if field.help_text %}
+                <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit">Далее</button>
+    </form>
+
+</body>
+</html>
