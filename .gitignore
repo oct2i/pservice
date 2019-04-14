@@ -20,10 +20,5 @@ venv.bak/
 *.log
 local_settings.py
 
-# django migrations
-**/migrations/**
-!**/migrations
-!**/migrations/__init__.py
-
 # other
 *.sqlite3
